@@ -302,6 +302,7 @@ int libc_init()
 	DYNLIB_RESOLVE(libc, memcpy_s);
 	DYNLIB_RESOLVE(libc, memmove_s);
 	DYNLIB_RESOLVE(libc, memset);
+	DYNLIB_RESOLVE(libc, memmem);
 	DYNLIB_RESOLVE(libc, strncmp);
 	DYNLIB_RESOLVE(libc, strncpy);
 	DYNLIB_RESOLVE(libc, strnlen_s);

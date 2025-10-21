@@ -252,7 +252,7 @@ int payload_main(struct payload_args *args)
 
         struct ioctl_readnandgroup_args ioc_args = {};
         ioc_args.group_id = i;
-        ioc_args.p_out = out_data;
+        ioc_args.p_out = (uint64_t)out_data;
 
         // NAND groups have different sizes:
         // group 0 is 0x4000000

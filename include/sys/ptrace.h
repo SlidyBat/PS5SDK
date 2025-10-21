@@ -64,6 +64,7 @@
 #define	PT_SYSCALL	22
 
 #define	PT_FOLLOW_FORK	23
+#define	PT_LWP_EVENTS	24
 
 #define PT_GETREGS      33	/* get general-purpose registers */
 #define PT_SETREGS      34	/* set general-purpose registers */

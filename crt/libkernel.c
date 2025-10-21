@@ -27,9 +27,7 @@ _Fn_(int        , clock_getres,                     clockid_t, struct timespec *
 _Fn_(int        , clock_gettime,                    clockid_t, struct timespec *);
 _Fn_(int        , clock_settime,                    clockid_t, const struct timespec *);
 _Fn_(int        , close,                            int);
-_Fn_(uint64_t   , cpuset_getaffinity,               void);
 _Fn_(uint64_t   , cpuset_getid,                     void);
-_Fn_(uint64_t   , cpuset_setaffinity,               void);
 _Fn_(uint64_t   , creat,                            void);
 _Fn_(uint64_t   , dlclose,                          void);
 _Fn_(uint64_t   , dlerror,                          void);
@@ -1456,7 +1454,7 @@ int libkernel_init()
 //    DYNLIB_RESOLVE(M_libkernel, uuidgen);
 //    DYNLIB_RESOLVE(M_libkernel, wait);
 //    DYNLIB_RESOLVE(M_libkernel, wait3);
-//    DYNLIB_RESOLVE(M_libkernel, waitpid);
+    DYNLIB_RESOLVE(M_libkernel, waitpid);
 //    DYNLIB_RESOLVE(M_libkernel, write);
 //    DYNLIB_RESOLVE(M_libkernel, writev);
 //    DYNLIB_RESOLVE(M_libkernel, sceKernelIsCronos);
@@ -1465,6 +1463,8 @@ int libkernel_init()
 ////  DYNLIB_RESOLVE(M_libkernel, errno);     // *? will need to be done manually if you really don't just use macro #define errno (* __error)
 //    DYNLIB_RESOLVE(M_libkernel, environ);
 //    DYNLIB_RESOLVE(M_libkernel, sigcode_addr);
+	DYNLIB_RESOLVE(M_libkernel, sceKernelStreamWriteCreate);
+	DYNLIB_RESOLVE(M_libkernel, sceKernelStreamWriteDelete);
 //
 	DYNLIB_RESOLVE(M_libkernel, __error);
 

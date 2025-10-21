@@ -19,5 +19,6 @@
 
 // Offsets from kernel .data base
 #define OFFSET_KERNEL_DATA_BASE_ALLPROC     0x276DC58
+#define OFFSET_KERNEL_DATA_BASE_QA_FLAGS    0x6466498
 
 #endif // PS5SDK_KERNEL_OFFSETS_321_H

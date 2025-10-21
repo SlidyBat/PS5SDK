@@ -40,7 +40,7 @@ void kwrite(uint64_t addr, uint64_t *data) {
 }
 
 // Public API function to write kernel data.
-void kernel_copyin(void *src, uint64_t kdest, size_t length)
+int kernel_copyin(const void *src, uint64_t kdest, size_t length)
 {
 	uint64_t write_buf[3];
 
@@ -57,11 +57,11 @@ void kernel_copyin(void *src, uint64_t kdest, size_t length)
 	kwrite(_pipe_addr + 0x10, (uint64_t *) &write_buf);
 
 	// Perform write across pipe
-	_write(_rw_pipe[1], src, length);
+	return _write(_rw_pipe[1], src, length);
 }
 
 // Public API function to read kernel data.
-void kernel_copyout(uint64_t ksrc, void *dest, size_t length)
+int kernel_copyout(uint64_t ksrc, void *dest, size_t length)
 {
 	uint64_t write_buf[3];
 
@@ -78,5 +78,5 @@ void kernel_copyout(uint64_t ksrc, void *dest, size_t length)
 	kwrite(_pipe_addr + 0x10, (uint64_t *) &write_buf);
 
 	// Perform read across pipe
-	_read(_rw_pipe[0], dest, length);
+	return _read(_rw_pipe[0], dest, length);
 }

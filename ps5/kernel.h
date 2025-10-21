@@ -12,7 +12,9 @@
 #include <stddef.h>
 
 // Firmware includes
-#if PS5_FW_VERSION == 0x300
+#if PS5_FW_VERSION == 0x102
+#include <ps5/kernel_offsets/offsets_102.h>
+#elif PS5_FW_VERSION == 0x300
 #include <ps5/kernel_offsets/offsets_300.h>
 #elif PS5_FW_VERSION == 0x320
 #include <ps5/kernel_offsets/offsets_320.h>
@@ -32,7 +34,7 @@
 
 // Public hacking API
 void kernel_init_rw(int master_sock, int victim_sock, int *rw_pipe, uint64_t pipe_addr);
-void kernel_copyin(void *src, uint64_t kdest, size_t length);
-void kernel_copyout(uint64_t ksrc, void *dest, size_t length);
+int kernel_copyin(const void *src, uint64_t kdest, size_t length);
+int kernel_copyout(uint64_t ksrc, void *dest, size_t length);
 
 #endif // PS5SDK_KERNEL_H
